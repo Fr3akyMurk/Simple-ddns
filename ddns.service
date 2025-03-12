@@ -3,10 +3,10 @@ Description=Custom DDNS Updater
 After=network.target
 
 [Service]
-Type=Simple
+Type=simple
 ExecStart=/bin/bash $HOME/simple-ddns/ddns_checker.sh
 Restart=always
-User=mark
+User=youruser
 
 [Install]
 WantedBy=multi-user.target
