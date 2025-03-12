@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_FILE="$HOME/ddns_records.json"
+CONFIG_FILE="./ddns_records.json"
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
     echo "[]" > "$CONFIG_FILE"
