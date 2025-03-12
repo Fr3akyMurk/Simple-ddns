@@ -1,0 +1,12 @@
+[Unit]
+Description=Custom DDNS Updater
+After=network.target
+
+[Service]
+Type=Simple
+ExecStart=/bin/bash /home/mark/ddns/ddns_checker.sh
+Restart=always
+User=mark
+
+[Install]
+WantedBy=multi-user.target
