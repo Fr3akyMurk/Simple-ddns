@@ -11,7 +11,7 @@ list_records() {
 }
 
 add_record() {
-    read -p "Enter domain name (e.g., Fr3akyMurk.eu): " domain
+    read -p "Enter domain name (e.g., example.com): " domain
     read -p "Enter check interval in seconds (default: 60): " interval
     interval=${interval:-60}
     read -p "Enter a Zone ID for the cloudflare record: " zone
