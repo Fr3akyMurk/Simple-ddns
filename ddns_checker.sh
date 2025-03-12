@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_FILE="$HOME/ddns_records.json"
+CONFIG_FILE="./ddns_records.json"
 
 while true; do
     records=$(jq -c '.[]' "$CONFIG_FILE")
