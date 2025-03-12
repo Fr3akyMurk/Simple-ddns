@@ -26,6 +26,6 @@ After you're done with the records, and overall editing the service, you must mo
 
 # WARNING
 This was made super quickly for **PRIVATE** use, this should not be used in a prod environment, I use this on my home server if anything.
-YOUR CLOUDFLARE API KEY WILL BE STORED IN __**PLAIN TEXT**__ IN YOUR HOME FOLDER. (thus the warning)
+YOUR CLOUDFLARE API KEY WILL BE STORED IN __**PLAIN TEXT**__ IN YOUR DDNS FOLDER. (thus the warning)
 
 PR's are welcome to improve it (although try not to make it extremely overcomplicated, it's called simple for a reason).
