@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash $HOME/simple-ddns/ddns_checker.sh
+ExecStart=/bin/bash /home/youruser/simple-ddns/ddns_checker.sh
 Restart=always
 User=youruser
 
