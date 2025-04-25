@@ -13,7 +13,7 @@ while true; do
         interval=$(echo "$record" | jq -r '.interval')
         api_key=$(echo "$record" | jq -r '.api_key')
         zone=$(echo "$record" | jq -r '.zone')
-        record=$(echo "$record" | jq -r '.record')
+        record_id=$(echo "$record" | jq -r '.record')
         proxied=$(echo "$record" | jq -r '.proxied')
 
         # Get current external IP
@@ -24,10 +24,22 @@ while true; do
 
         if [[ "$current_ip" != "$cf_record_ip" ]]; then
             echo "Updating Cloudflare record for $domain..."
-            curl -X PUT "https://api.cloudflare.com/client/v4/zones/$zone/dns_records/$record" \
+
+            curl -X PUT "https://api.cloudflare.com/client/v4/zones/$zone/dns_records/$record_id" \
                 -H "Authorization: Bearer $api_key" \
                 -H "Content-Type: application/json" \
-                --data "{\"type\":\"A\",\"name\":\"$domain\",\"content\":\"$current_ip\",\"ttl\":120,\"proxied\":\"$proxied\"}"
+                --data "$(jq -n \
+                    --arg type "A" \
+                    --arg name "$domain" \
+                    --arg content "$current_ip" \
+                    --argjson proxied "$proxied" \
+                    '{
+                        type: $type,
+                        name: $name,
+                        content: $content,
+                        ttl: 120,
+                        proxied: $proxied
+                    }')"
         fi
 
         sleep "$interval"
