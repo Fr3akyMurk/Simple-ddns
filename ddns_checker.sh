@@ -1,6 +1,9 @@
 #!/bin/bash
 
-CONFIG_FILE="./ddns_records.json"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_FILE="$SCRIPT_DIR/ddns_records.json"
+
+echo "Looking for config at: $CONFIG_FILE"
 
 while true; do
     records=$(jq -c '.[]' "$CONFIG_FILE")
